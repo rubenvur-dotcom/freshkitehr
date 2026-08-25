@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Freshkite Brand Tokens ── */
+    --bg-base:              #F0FDFA;
+    --bg-surface:           #FFFFFF;
+    --bg-sidebar:           #0A0F1E;
+    --bg-hover:             #F0FDFA;
+
+    --color-primary:        #0D9488;
+    --color-primary-hover:  #0F766E;
+    --color-primary-light:  #CCFBF1;
+    --color-accent:         #10B981;
+    --color-accent-light:   #D1FAE5;
+
+    --text-primary:         #111827;
+    --text-secondary:       #6B7280;
+    --text-muted:           #9CA3AF;
+
+    --border-default:       #E5E7EB;
+    --border-focus:         #0D9488;
+
+    --color-success:        #10B981;
+    --color-success-light:  #D1FAE5;
+    --color-warning:        #F59E0B;
+    --color-warning-light:  #FEF3C7;
+    --color-danger:         #EF4444;
+    --color-danger-light:   #FEE2E2;
+    --color-info:           #3B82F6;
+    --color-info-light:     #DBEAFE;
+
+    /* shadcn/ui token mapping */
+    --background:           240 253 250;
+    --foreground:           17 24 39;
+    --card:                 255 255 255;
+    --card-foreground:      17 24 39;
+    --popover:              255 255 255;
+    --popover-foreground:   17 24 39;
+    --primary:              13 148 136;
+    --primary-foreground:   255 255 255;
+    --secondary:            204 251 241;
+    --secondary-foreground: 13 148 136;
+    --muted:                243 244 246;
+    --muted-foreground:     107 114 128;
+    --accent:               16 185 129;
+    --accent-foreground:    255 255 255;
+    --destructive:          239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border:               229 231 235;
+    --input:                229 231 235;
+    --ring:                 13 148 136;
+    --radius:               0.5rem;
+    --chart-1:              13 148 136;
+    --chart-2:              16 185 129;
+    --chart-3:              245 158 11;
+    --chart-4:              59 130 246;
+    --chart-5:              239 68 68;
+  }
+
+  * { @apply border-border; }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+}
+
+@layer components {
+  /* ── Glass — Primary (teal) ── */
+  .btn-glass {
+    background: rgba(13, 148, 136, 0.10);
+    color: #0D9488;
+    border: 1px solid rgba(13, 148, 136, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(13, 148, 136, 0.12);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-glass:hover:not(:disabled) {
+    background: rgba(13, 148, 136, 0.18);
+    box-shadow: 0 4px 16px rgba(13, 148, 136, 0.22);
+    transform: translateY(-1px);
+  }
+  .btn-glass:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── Solid CTA (teal) ── */
+  .btn-solid {
+    background: #0D9488;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.30);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-solid:hover:not(:disabled) {
+    background: #0F766E;
+    box-shadow: 0 6px 20px rgba(13, 148, 136, 0.40);
+    transform: translateY(-1px);
+  }
+  .btn-solid:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── Cancel / Secondary ── */
+  .btn-cancel {
+    background: rgba(255, 255, 255, 0.7);
+    color: #374151;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-cancel:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.18);
+  }
+  .btn-cancel:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── Standard card ── */
+  .kite-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  /* ── Status badges ── */
+  .badge-pending  { background: #FEF3C7; color: #92400E; }
+  .badge-approved { background: #CCFBF1; color: #0F766E; }
+  .badge-rejected { background: #FEE2E2; color: #991B1B; }
+  .badge-teal     { background: #CCFBF1; color: #0D9488; }
+  .badge-info     { background: #DBEAFE; color: #1D4ED8; }
+}
+
+/* ── Global input / textarea / select focus override ── */
+input,
+textarea,
+select {
+  border-color: #E5E7EB;
+  outline: none;
+}
+
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  border-color: #0D9488 !important;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10) !important;
+  outline: none !important;
+  -webkit-appearance: none;
+}
+
+/* Chrome autofill background suppression */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset, 0 0 0 3px rgba(13, 148, 136, 0.10) !important;
+  box-shadow: 0 0 0 1000px #ffffff inset, 0 0 0 3px rgba(13, 148, 136, 0.10) !important;
+  -webkit-text-fill-color: #111827 !important;
+  border-color: #0D9488 !important;
+}
+
+/* ── Native select option override ── */
+select option {
+  background: #FFFFFF !important;
+  color: #111827 !important;
+}
+select option:hover,
+select option:checked {
+  background: #CCFBF1 !important;
+  color: #0D9488 !important;
+}
+
+/* ── Page & modal transitions ── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #E5E7EB transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #E5E7EB;
+    border-radius: 3px;
+  }
+  .animate-in {
+    animation: fadeInUp 200ms ease both;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Nuclear yellow/amber removal ── */
+*[class*="yellow"],
+*[class*="amber"] {
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* ── Override all native select / input focus to remove browser yellow ring ── */
+select,
+select:focus,
+select:focus-visible,
+select:active {
+  border-color: #E5E7EB !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+select:focus,
+select:focus-visible {
+  border-color: #0D9488 !important;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.10) !important;
+}
+
+/* Kill Tailwind yellow/amber ring utility classes at their root */
+.ring-yellow-300, .ring-yellow-400, .ring-yellow-500,
+.focus\:ring-yellow-300:focus, .focus\:ring-yellow-400:focus, .focus\:ring-yellow-500:focus,
+.border-yellow-300, .border-yellow-400, .border-yellow-500,
+.focus\:border-yellow-300:focus, .focus\:border-yellow-400:focus, .focus\:border-yellow-500:focus {
+  --tw-ring-color: rgba(13, 148, 136, 0.10) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Radix SelectTrigger — remove any yellow outline/ring on focus */
+[data-radix-select-trigger]:focus,
+[data-radix-select-trigger]:focus-visible,
+button[role="combobox"]:focus,
+button[role="combobox"]:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.15) !important;
+  border-color: #0D9488 !important;
+}
+
+/* ── Radix / custom dropdown option styling ── */
+[role="option"] {
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+}
+[role="option"]:hover,
+[role="option"]:focus,
+[role="option"][aria-selected="true"],
+[role="option"][data-highlighted] {
+  background-color: #F0FDFA !important;
+  color: #0D9488 !important;
+  outline: none !important;
+}
+[role="listbox"] {
+  background-color: #FFFFFF !important;
+}
+[role="listbox"] > * {
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+}
